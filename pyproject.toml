@@ -1,0 +1,45 @@
+[tool.poetry]
+name = "xrp"
+version = "0.1.0"
+description = ""
+authors = ["Larry O'Brien <lobrien@knowing.net>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "~3.11"
+numpy = "^2.1.2"
+opencv-python = "^4.10.0.84"
+robotpy = "^2024.3.2.2"
+robotpy-xrp = "^2024.3.2.1"
+wpilib = "^2024.3.2.1"
+
+[tool.robotpy]
+
+# Version of robotpy this project depends on
+robotpy_version = "2024.3.2.2"
+
+# Which extra RobotPy components should be installed
+# -> equivalent to `pip install robotpy[extra1, ...]
+robotpy_extras = [
+    # "all",
+    "apriltag",
+    # "commands2",
+    # "cscore",
+    # "navx",
+    # "pathplannerlib",
+    # "phoenix5",
+    # "phoenix6",
+    # "photonvision",
+    # "playingwithfusion",
+    # "rev",
+    # "romi",
+    # "sim",
+    "xrp",
+]
+
+# Other pip packages to install
+requires = []
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
