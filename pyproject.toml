@@ -24,7 +24,7 @@ robotpy_version = "2024.3.2.2"
 robotpy_extras = [
     # "all",
     "apriltag",
-    # "commands2",
+    "commands2",
     # "cscore",
     # "navx",
     # "pathplannerlib",

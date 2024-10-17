@@ -1,0 +1,41 @@
+stateDiagram-v2
+       direction LR
+    [*] --> robotInit()
+    Autonomous --> Teleop
+    
+    note left of Continuous
+    _Periodic functions run 50 times / sec
+    end note
+
+    state forkState <<fork>>
+    robotInit()-->forkState
+    forkState --> Continuous
+    forkState --> Autonomous
+
+    state joinState <<join>>
+    Teleop --> joinState
+    Continuous --> joinState
+
+    state Continuous {
+        [*] --> robotPeriodic()
+        robotPeriodic() --> robotPeriodic()
+        robotPeriodic() --> rEnd()
+        rEnd() --> [*]
+    }
+
+    state Autonomous {
+        [*] --> autonomousInit()
+        autonomousInit() --> autonomousPeriodic()
+        autonomousPeriodic() --> autonomousEnd()
+        autonomousPeriodic() --> autonomousPeriodic()
+    }
+
+    state Teleop {
+        [*] --> teleopInit()
+        teleopInit() --> teleopPeriodic()
+        teleopPeriodic() --> teleopPeriodic()
+        teleopPeriodic() --> teleopEnd()
+        teleopEnd() --> [*]
+    }
+
+    joinState --> [*]

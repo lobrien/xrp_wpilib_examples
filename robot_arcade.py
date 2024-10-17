@@ -19,4 +19,7 @@ class ArcadeRobot(wpilib.TimedRobot):
         self.stick = wpilib.Joystick(0)
 
     def teleopPeriodic(self) -> None:
-        self.drive.arcadeDrive(xSpeed=self.stick.getX(), zRotation=self.stick.getY())
+        # Note that joystick axes are different than wpilib axes
+        # See: https://docs.wpilib.org/en/stable/docs/software/basic-programming/coordinate-system.html
+        self.drive.tankDrive(xspeed=-self.stick.getY(), zrotation=-self.stick.getX())
+        
