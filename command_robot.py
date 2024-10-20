@@ -21,6 +21,7 @@ class CommandRobot(wpilib.TimedRobot):
         commands2.CommandScheduler.getInstance().run()
 
     def autonomousInit(self):
+        # Or, just import AutonomousCommand function? What's point of this indirection?
         self.autonomous_command = self.container.getAutonomousCommand()
         if self.autonomous_command:
             self.autonomous_command.schedule()
@@ -32,7 +33,7 @@ class CommandRobot(wpilib.TimedRobot):
     def testInit(self):
         commands2.CommandScheduler.getInstance().cancelAll()
 
-# Never changes (?).
+# Changes only on composition of subsystems?
 class MyContainer:
     def __init__(self):
         self.drive = DriveSubsystem()
@@ -40,7 +41,7 @@ class MyContainer:
     def getAutonomousCommand(self):
         return AutonomousCommand(self.drive)
 
-# Definitely changes w hardware, but not so much as commands
+# Definitely changes w hardware, but rarely after build (?)
 class DriveSubsystem(commands2.SubsystemBase):
     def __init__(self):
         self.io = xrp.XRPOnBoardIO()
@@ -52,16 +53,19 @@ class DriveSubsystem(commands2.SubsystemBase):
         self.rightMotor.setInverted(True)
 
         self.driver = wpilib.drive.DifferentialDrive(self.leftMotor, self.rightMotor)
-        self.driver.feed()
         # TODO: Can't be right, but I get timeout exception after ending autonomous
         self.driver.setSafetyEnabled(False)
-
+        self.driver.feed()
+        
     def drive(self, speed: float, rotation: float):
         self.driver.arcadeDrive(speed, rotation)
         
+# See `MyContainer.getAutonomousCommand`
 def AutonomousCommand(drive: DriveSubsystem):
-       return CircleCWForward(drive).andThen(CircleCWBack(drive))
+       return (CircleCWForward(drive)
+               .andThen(CircleCWBack(drive)))
 
+# Behavior in commands. Simple states. 
 class CircleCWForward(commands2.CommandBase):
     def __init__(self, drive: DriveSubsystem):
         self.drive_system = drive
@@ -84,7 +88,6 @@ class CircleCWForward(commands2.CommandBase):
         self.drive_system.io.setLed(False)
         self.drive_system.drive(0, 0)
         
-
 class CircleCWBack(commands2.CommandBase):
     def __init__(self, drive: DriveSubsystem):
         self.drive_system = drive

@@ -7,7 +7,7 @@ import ntcore
 os.environ["HALSIMXRP_HOST"] = "192.168.42.1"
 os.environ["HALSIMXRP_PORT"] = "3540"
 
-class MyRobot(wpilib.TimedRobot):
+class MotorRobot(wpilib.TimedRobot):
     def robotInit(self):
         self.io = xrp.XRPOnBoardIO()
       
