@@ -81,7 +81,7 @@ class MotorRobot(wpilib.TimedRobot):
         dl = self.leftEncoder.getDistance()
         dr = self.rightEncoder.getDistance()
         print(f"Encoder distance: {dl}, {dr}")
-        if dl > 12: # inches
+        if dl > 66.5: # inches
             self.drivetrain.stopMotor()
             self.ran = True
             print("Stopped")
