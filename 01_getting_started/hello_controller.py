@@ -7,7 +7,7 @@ import ntcore
 os.environ["HALSIMXRP_HOST"] = "192.168.42.1"
 os.environ["HALSIMXRP_PORT"] = "3540"
 
-class MotorRobot(wpilib.TimedRobot):
+class ControlledRobot(wpilib.TimedRobot):
     def robotInit(self):
         self.io = xrp.XRPOnBoardIO()
       
@@ -15,14 +15,21 @@ class MotorRobot(wpilib.TimedRobot):
         self.io.setLed(False)
 
         self.motor = xrp.XRPMotor(0)
+        self.controller = wpilib.XboxController(0)
 
     def autonomousInit(self):
         print("autoInit")
         self.io.setLed(True)
         self.motor.set(0.5)
       
-    def autonomousExit(self):
-        print("autoExit")
+    def teleopInit(self):
+        print("teleopInit")
         self.io.setLed(False)
         self.motor.stopMotor()
 
+    def teleopPeriodic(self):
+        if self.controller.getAButtonPressed():
+            self.motor.set(0.5)
+        if self.controller.getBButtonPressed():
+            self.motor.stop(0)
+ 

@@ -1,7 +1,6 @@
 import wpilib
 import xrp
 import os
-import ntcore
 
 # This is easier than environment variables on every dev machine
 os.environ["HALSIMXRP_HOST"] = "192.168.42.1"
@@ -18,6 +17,6 @@ class MyRobot(wpilib.TimedRobot):
         print("autoInit")
         self.io.setLed(True)
 
-    def teleopInit(self):
-        print("teleopInit")
+    def autonomousExit(self):
+        print("autoExit")
         self.io.setLed(False)

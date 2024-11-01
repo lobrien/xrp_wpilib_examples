@@ -51,16 +51,9 @@ class MotorRobot(wpilib.TimedRobot):
             print(f"Encoder distance: {dl}, {dr}")
         else:
             self.drivetrain.stopMotor()
-            self.ran = True
             print("Stopped")
     
     def autonomousEnd(self):
         self.drivetrain.stopMotor()
-        
-    def teleopInit(self):
-        print("teleopInit")
         self.io.setLed(False)
-        
-    def disabledInit(self):
-        pass
         

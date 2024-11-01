@@ -31,9 +31,6 @@ class MyRobot(wpilib.TimedRobot):
         self.lastLedControl = False
         self.io.setLed(False)
 
-    def autonomousPeriodic(self) -> None:
-        pass
-
     def ledToggle(self):
         self.io.setLed(not self.lastLedControl)
         self.lastLedControl = not self.lastLedControl
