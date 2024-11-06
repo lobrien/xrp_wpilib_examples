@@ -15,7 +15,8 @@ class MotorRobot(wpilib.TimedRobot):
         # Quirk: You must set the XRP LED to False to initialize it
         self.io.setLed(False)
 
-        self.motor = xrp.XRPMotor(0)
+        self.motor = xrp.XRPMotor(1)
+        self.motor.setInverted(True)
         self.gyro = xrp.XRPGyro()
         self.gyro.reset()
 

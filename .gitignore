@@ -1,2 +1,4 @@
 ﻿.wpilib
 **/__pycache__
+.DS_Store
+actions.json
