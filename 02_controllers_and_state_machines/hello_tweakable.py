@@ -23,6 +23,9 @@ class MyRobot(wpilib.TimedRobot):
 
         self.axisXPub = self.table.getDoubleTopic("X").publish()
         self.axisYPub = self.table.getDoubleTopic("Y").publish()
+
+        # Weird how getEntry() instead of `getBooleanTopic` and that `subscribe` call passes `defaultValue`
+        # It makes me think this line isn't necessary and getEntry is superior to get{TYPE}Topic
         self.table.getEntry("SetLed").setDefaultBoolean(False)
 
         self.ledControlSub = self.table.getBooleanTopic("SetLed").subscribe(defaultValue=False)

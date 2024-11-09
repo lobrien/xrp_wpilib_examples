@@ -11,7 +11,6 @@ class ControlledRobot(wpilib.TimedRobot):
     def robotInit(self):
         self.io = xrp.XRPOnBoardIO()
       
-        # Quirk: You must set the XRP LED to False to initialize it
         self.io.setLed(False)
 
         self.motor = xrp.XRPMotor(0)
@@ -31,5 +30,5 @@ class ControlledRobot(wpilib.TimedRobot):
         if self.controller.getAButtonPressed():
             self.motor.set(0.5)
         if self.controller.getBButtonPressed():
-            self.motor.stop(0)
- 
+            self.motor.set(0)
+        

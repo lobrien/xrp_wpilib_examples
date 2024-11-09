@@ -103,7 +103,7 @@ Recursion is good. Recursion is clear in retrospect. Recursion is generally more
 
 ### No type hints, few comments
 
-It stabs me to the heart to conclude that, unless `mypy` is integrated into your build process, type hints are more trouble than they're worth for new FRC developers. My issue is that FRC code is _particularly_ prone to being updated on the fly and everything that's optional becomes obsolete very quickly.
+It stabs me to the heart to conclude that, unless `mypy` is integrated into your build process, type hints are more trouble than they're worth for new FRC developers. My issue is that FRC code is _particularly_ prone to being updated on the fly and everything that's optional (like type-hints) becomes obsolete very quickly.
 
 Out-of-date comments are worse than no comments and incorrect type hints are worse than out-of-date comments. But as far as I know, even if you install `mypy` support in Visual Studio Code mistakes appear as "Problems" warnings and not as errors. (Let me know if I'm wrong, because I would _love_ to be wrong!) 
 
