@@ -15,7 +15,7 @@ Prerequisites:
 - [Install FRC Game, `wpilib`, and RobotPy on your dev computer(s)](https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/frc-game-tools.html)
 - [Install `wpilib` on the XRP](https://docs.wpilib.org/en/stable/docs/xrp-robot/hardware-and-imaging.html) 
 - Optional but highly recommended: [Install Poetry on your dev machines](https://python-poetry.org/docs/)
-- Run `poetry init`. This uses the `pyproject.toml` project configuration file and the `poetry.lock` file to determine what packages will be downloaded (by `pip` behind the scenes). The `poetry.lock` file contains the pre-resolved versions needed, which is delightful in complex projects.
+- Run `poetry install`. This uses the `pyproject.toml` project configuration file and the `poetry.lock` file to determine what packages will be downloaded (by `pip` behind the scenes). The `poetry.lock` file contains the pre-resolved versions needed, which is delightful in complex projects.
 
 ## Running XRP programs
 
