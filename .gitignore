@@ -1,6 +1,7 @@
-﻿.wpilib
+.wpilib
 **/__pycache__
 .DS_Store
 actions.json
 **/networktables.json
 **/simgui*.json
+/.idea
