@@ -2,3 +2,5 @@
 **/__pycache__
 .DS_Store
 actions.json
+**/networktables.json
+**/simgui*.json
