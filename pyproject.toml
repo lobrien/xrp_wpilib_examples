@@ -13,13 +13,14 @@ opencv-python = "^4.10.0.84"
 robotpy = "^2024.3.2.2"
 robotpy-xrp = "^2024.3.2.1"
 wpilib = "^2024.3.2.1"
-jupyterlab = "^4.2.5"
 pynput = "^1.7.7"
 rubicon-objc = "0.4.0"
 
 [tool.poetry.group.dev.dependencies]
 mkdocs = "^1.6.1"
 mkdocs-material = "^9.5.42"
+jupyterlab = "^4.2.5"
+graphviz = "^0.20.3"
 
 [tool.robotpy]
 
